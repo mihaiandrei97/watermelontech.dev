@@ -1,11 +1,167 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import logo from '../assets/logo.png';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="WatermelonTech | Software Development in Bucharest"
+	description="Small software development company based in Bucharest, Romania. Operated by a single developer, WatermelonTech builds websites and custom software tools for clients."
+>
+	<main class="page">
+		<section class="hero">
+			<div class="hero__brand">
+				<img src={logo.src} alt="WatermelonTech logo" class="hero__logo" />
+				<p class="hero__domain">watermelontech.dev</p>
+			</div>
+			<h1>Software crafted with focus and clarity.</h1>
+			<p class="hero__description">
+				Small software development company based in Bucharest, Romania. The company is operated by a
+				single developer and provides website development and custom software tools for clients.
+			</p>
+		</section>
+
+		<section class="content-grid" aria-label="Services and company details">
+			<article class="card">
+				<h2>What We Build</h2>
+				<ul>
+					<li>Presentation websites for businesses and personal brands</li>
+					<li>Custom web applications tailored to real workflows</li>
+					<li>Internal software tools to simplify repetitive tasks</li>
+				</ul>
+			</article>
+
+			<article class="card">
+				<h2>How We Work</h2>
+				<ul>
+					<li>Direct communication with the developer building your product</li>
+					<li>Lean process, transparent milestones, practical delivery</li>
+					<li>Careful attention to maintainability and long-term value</li>
+				</ul>
+			</article>
+		</section>
+
+		<footer class="footer">
+			<p>WatermelonTech · Bucharest, Romania</p>
+		</footer>
+	</main>
 </Layout>
+
+<style>
+	.page {
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 3.5rem 1.25rem 2rem;
+	}
+
+	.hero {
+		padding: 2rem;
+		border: 1px solid var(--surface-border);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
+		border-radius: 24px;
+		backdrop-filter: blur(3px);
+		animation: rise-in 0.75s ease-out both;
+	}
+
+	.hero__brand {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+	}
+
+	.hero__logo {
+		width: 54px;
+		height: 54px;
+		object-fit: contain;
+	}
+
+	.hero__domain {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.95rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent-soft);
+		margin: 0;
+	}
+
+	h1 {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: clamp(2rem, 6vw, 3.8rem);
+		line-height: 1.08;
+		margin: 1rem 0 0;
+		max-width: 14ch;
+	}
+
+	.hero__description {
+		font-size: clamp(1rem, 2.7vw, 1.2rem);
+		line-height: 1.65;
+		max-width: 65ch;
+		color: var(--text-soft);
+		margin-top: 1rem;
+	}
+
+	.content-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 1rem;
+	}
+
+	.card {
+		padding: 1.25rem;
+		border-radius: 18px;
+		border: 1px solid var(--surface-border);
+		background-color: var(--surface);
+		animation: rise-in 0.85s ease-out both;
+	}
+
+	.card:nth-child(2) {
+		animation-delay: 120ms;
+	}
+
+	h2 {
+		font-size: 1.2rem;
+		margin: 0;
+		font-family: 'Space Grotesk', sans-serif;
+	}
+
+	ul {
+		margin: 0.85rem 0 0;
+		padding-left: 1.1rem;
+		color: var(--text-soft);
+		line-height: 1.7;
+	}
+
+	.footer {
+		margin: 1.4rem 0 0;
+		text-align: center;
+		color: var(--accent-soft);
+		font-size: 0.92rem;
+		letter-spacing: 0.03em;
+	}
+
+	@media (max-width: 780px) {
+		.page {
+			padding-top: 2.3rem;
+		}
+
+		.hero {
+			padding: 1.4rem;
+		}
+
+		.content-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@keyframes rise-in {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>

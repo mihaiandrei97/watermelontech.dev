@@ -1,23 +1,64 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'WatermelonTech | Custom Software and Websites',
+	description = 'Small software development company based in Bucharest, Romania. Website development and custom software tools for clients.',
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 
-<style>
+<style is:global>
+	:root {
+		--bg-deep: #081818;
+		--bg-soft: #13312d;
+		--surface: rgba(255, 255, 255, 0.12);
+		--surface-border: rgba(255, 255, 255, 0.24);
+		--text-main: #f4fff8;
+		--text-soft: #b7d8c9;
+		--accent: #ff6f3c;
+		--accent-soft: #ffc292;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
 	html,
 	body {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		padding: 0;
+		min-height: 100%;
+	}
+
+	body {
+		font-family: 'Manrope', sans-serif;
+		color: var(--text-main);
+		background:
+			radial-gradient(circle at 15% 15%, #2f7f69 0, transparent 38%),
+			radial-gradient(circle at 80% 10%, #1f5d57 0, transparent 34%),
+			linear-gradient(145deg, var(--bg-deep), var(--bg-soft));
 	}
 </style>
